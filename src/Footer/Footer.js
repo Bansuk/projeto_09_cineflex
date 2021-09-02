@@ -1,10 +1,16 @@
 import Movie from "../MoviesList/Movies/Movie";
 import "./Footer.css";
 
-const Footer = ({ movieTitle, movieShowtime }) => {
+const Footer = ({ movieTitle, movieShowtime, id, source, alt }) => {
     return (
         <div className="footer">
-            <Movie cardStyle={"footer__card"} imageStyle={"footer__image"} />
+            <Movie
+                id={id}
+                imageStyle={"footer__image"}
+                cardStyle={"footer__card"}
+                source={source}
+                alt={alt}
+            />
             <div>
                 <span className="footer__title">{movieTitle}</span>
                 <br />

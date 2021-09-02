@@ -8,14 +8,17 @@ import { useParams } from "react-router-dom";
 const SessionsList = () => {
     const { idFilme } = useParams();
     const [sessions, setSessions] = useState(null);
+    const [movie, setMovies] = useState(null);
 
     useEffect(() => {
-        getSessionsList(idFilme).then(response =>
-            setSessions(response.data.days)
+        getSessionsList(idFilme).then(
+            response => (
+                setSessions(response.data.days), setMovies(response.data)
+            )
         );
     }, []);
 
-    if (sessions === null) {
+    if (sessions === null || movie === null) {
         return <span>Carregando...</span>;
     }
 
@@ -31,7 +34,12 @@ const SessionsList = () => {
                     />
                 ))}
             </div>
-            <Footer />
+            <Footer
+                movieTitle={movie.title}
+                id={movie.id}
+                source={movie.posterURL}
+                alt={movie.overview}
+            />
         </>
     );
 };
