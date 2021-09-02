@@ -1,7 +1,7 @@
 import "./MainTitle.css";
 
-const MainTitle = () => {
-    return <h1 className="mainTitle">Selecione o filme</h1>;
+const MainTitle = ({ content }) => {
+    return <h1 className="mainTitle">{content}</h1>;
 };
 
 export default MainTitle;

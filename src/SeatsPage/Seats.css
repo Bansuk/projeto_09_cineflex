@@ -1,0 +1,48 @@
+.seats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.seats__button {
+    width: 225px;
+    height: 42px;
+}
+
+.seats__map {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.seats__seat {
+    background-color: #c3cfd9;
+    border: 1px solid #808f9d;
+    border-radius: 12px;
+    width: 26px;
+    height: 26px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seats__seat--selected {
+    background-color: #8dd7cf;
+}
+
+.seats__form {
+    margin-top: 40px;
+}
+
+.seats__input {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #293845;
+}

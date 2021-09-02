@@ -1,13 +1,32 @@
 import "./MoviesList.css";
-import Movies from "./Movies/Movies";
+import Movies from "./Movies/Movie";
+import { useState, useEffect } from "react";
+import { getMoviesList } from "../Auxiliar/API";
 
 const MoviesList = () => {
+    const [movies, setMovies] = useState(null);
+
+    useEffect(() => {
+        getMoviesList().then(response => {
+            setMovies(response.data);
+        });
+    }, []);
+
+    if (movies === null) {
+        return <span>Carregando...</span>;
+    }
+
     return (
         <div className="moviesList">
-            <Movies />
-            <Movies />
-            <Movies />
-            <Movies />
+            {movies.map(movie => (
+                <Movies
+                    key={movie.id}
+                    imageStyle={"movie__image"}
+                    cardStyle={"movie__card"}
+                    source={movie.posterURL}
+                    alt={movie.overview}
+                />
+            ))}
         </div>
     );
 };
