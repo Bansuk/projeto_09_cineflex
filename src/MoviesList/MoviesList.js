@@ -1,7 +1,7 @@
-import "./MoviesList.css";
-import Movies from "./Movies/Movie";
 import { useState, useEffect } from "react";
 import { getMoviesList } from "../Auxiliar/API";
+import Movies from "./Movies/Movie";
+import "./MoviesList.css";
 
 const MoviesList = () => {
     const [movies, setMovies] = useState(null);

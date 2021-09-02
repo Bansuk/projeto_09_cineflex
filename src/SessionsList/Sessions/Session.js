@@ -1,13 +1,20 @@
-import "./Session.css";
 import Button from "../../Auxiliar/Button";
+import "./Session.css";
 
-const Session = () => {
+const Session = ({ date, weekday, showtimes }) => {
     return (
         <>
-            <span className="session__daytime">Quinta-feira - 24/06/2021</span>
+            <span className="session__daytime">
+                {weekday} - {date}
+            </span>
             <div className="session__hours">
-                <Button content={"15:00"} style={"session__button"} />
-                <Button content={"19:00"} style={"session__button"} />
+                {showtimes.map(showtime => (
+                    <Button
+                        key={showtime.id}
+                        content={showtime.name}
+                        style={"session__button"}
+                    />
+                ))}
             </div>
         </>
     );

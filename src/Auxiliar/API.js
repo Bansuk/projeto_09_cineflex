@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const MOVIES_URL =
-    "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies";
+    "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies";
 
 const SEATS_URL =
     "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/showtimes";
