@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import "./Movie.css";
 
-const Movies = ({ imageStyle, cardStyle, source, alt }) => {
+const Movies = ({ id, imageStyle, cardStyle, source, alt }) => {
     return (
-        <div className={cardStyle}>
-            <img className={imageStyle} src={source} alt={alt} />
-        </div>
+        <Link to={`/sessoes/${id}`}>
+            <div className={cardStyle}>
+                <img className={imageStyle} src={source} alt={alt} />
+            </div>
+        </Link>
     );
 };
 

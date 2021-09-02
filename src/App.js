@@ -7,11 +7,18 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
     return (
-        <>
+        <BrowserRouter>
             <Header />
             <MainTitle content={"Selecione o filme"} />
-            <SessionsList path="/sessoes/:idFilme" />{" "}
-        </>
+            <Switch>
+                <Route path="/" exact>
+                    <MoviesList />
+                </Route>
+                <Route path="/sessoes/:idFilme" exact>
+                    <SessionsList />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     );
 };
 

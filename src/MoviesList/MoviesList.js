@@ -21,6 +21,7 @@ const MoviesList = () => {
             {movies.map(movie => (
                 <Movies
                     key={movie.id}
+                    id={movie.id}
                     imageStyle={"movie__image"}
                     cardStyle={"movie__card"}
                     source={movie.posterURL}
