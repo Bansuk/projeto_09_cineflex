@@ -11,11 +11,14 @@ const App = () => {
             <Header />
             <MainTitle content={"Selecione o filme"} />
             <Switch>
-                <Route path="/" exact>
-                    <MoviesList />
-                </Route>
-                <Route path="/sessoes/:idFilme" exact>
-                    <SessionsList />
+                <Route path="/" exact component={MoviesList} />
+                <Route
+                    path="/sessoes/:idFilme"
+                    exact
+                    component={SessionsList}
+                />
+                <Route path="/assentos/:idSessao" exact>
+                    <Seats />
                 </Route>
             </Switch>
         </BrowserRouter>

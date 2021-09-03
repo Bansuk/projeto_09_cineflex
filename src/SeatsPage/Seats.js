@@ -1,25 +1,25 @@
 import Button from "../Auxiliar/Button";
 import "./Seats.css";
 import Footer from "../Footer/Footer";
+import { useEffect, useState } from "react";
+import { getSeatsList } from "../Auxiliar/API";
+import { useParams } from "react-router-dom";
 
 const Seats = () => {
+    const { idSessao } = useParams();
+    const [seats, setSeats] = useState(null);
+
+    useEffect(() => {
+        getSeatsList(idSessao).then(response => setSeats(response.data));
+    }, [idSessao]);
+
+    if (seats === null) {
+        return <span>Carregando...</span>;
+    }
+
     return (
         <div className="seats">
             <div className="seats__map">
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-                <div className="seats__seat">01</div>
-            </div>
-            <div className="seats__status">
                 <div className="seats__seat">01</div>
             </div>
             <form className="seats__form">
@@ -35,8 +35,12 @@ const Seats = () => {
             </form>
             <Button style={"seats__button"} content={"Reservar assento(s)"} />
             <Footer
-                movieTitle={"Enola Holmes"}
-                movieShowtime={"Quinta-feira - 15:00"}
+                key={seats.movie.id}
+                movieTitle={seats.movie.title}
+                id={seats.movie.id}
+                source={seats.movie.posterURL}
+                alt={seats.movie.overview}
+                movieShowtime={`${seats.day.weekday} - ${seats.name}`}
             />
         </div>
     );
