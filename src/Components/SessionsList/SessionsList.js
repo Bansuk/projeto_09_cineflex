@@ -1,7 +1,7 @@
 import Session from "./Sessions/Session";
 import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
-import { getSessionsList } from "../Auxiliar/API";
+import { getSessionsList } from "../../Auxiliar/API";
 import { useParams } from "react-router-dom";
 import "./SessionsList.css";
 
@@ -31,7 +31,7 @@ const SessionsList = () => {
             </div>
             <Footer
                 movieTitle={sessions.title}
-                id={sessions.id}
+                link={null}
                 source={sessions.posterURL}
                 alt={sessions.overview}
             />

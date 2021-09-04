@@ -1,8 +1,8 @@
-import Header from "./Header/Header";
-import MainTitle from "./MainTitle/MainTitle";
-import MoviesList from "./MoviesList/MoviesList";
-import SessionsList from "./SessionsList/SessionsList";
-import Seats from "./SeatsPage/Seats";
+import Header from "./Components/Header/Header";
+import MainTitle from "./Components/MainTitle/MainTitle";
+import MoviesList from "./Components/MoviesList/MoviesList";
+import SessionsList from "./Components/SessionsList/SessionsList";
+import Seats from "./Components/SeatsPage/Seats";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {

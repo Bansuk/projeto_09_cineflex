@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getMoviesList } from "../Auxiliar/API";
+import { getMoviesList } from "../../Auxiliar/API";
 import Movies from "./Movies/Movie";
 import "./MoviesList.css";
 
@@ -21,7 +21,7 @@ const MoviesList = () => {
             {movies.map(movie => (
                 <Movies
                     key={movie.id}
-                    id={movie.id}
+                    link={`/sessoes/${movie.id}`}
                     imageStyle={"movie__image"}
                     cardStyle={"movie__card"}
                     source={movie.posterURL}

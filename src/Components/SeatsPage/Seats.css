@@ -32,6 +32,12 @@
 
 .seats__seat--selected {
     background-color: #8dd7cf;
+    border: 1px solid #45bdb0;
+}
+
+.seats__seat--unavailable {
+    background-color: #fbe192;
+    border: 1px solid #f7c52b;
 }
 
 .seats__form {

@@ -1,4 +1,4 @@
-import Button from "../../Auxiliar/Button";
+import Button from "../../../Auxiliar/Button";
 import "./Session.css";
 import { Link } from "react-router-dom";
 
