@@ -17,9 +17,7 @@ const App = () => {
                     exact
                     component={SessionsList}
                 />
-                <Route path="/assentos/:idSessao" exact>
-                    <Seats />
-                </Route>
+                <Route path="/assentos/:idSessao" exact component={Seats} />
             </Switch>
         </BrowserRouter>
     );

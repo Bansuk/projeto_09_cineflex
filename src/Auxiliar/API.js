@@ -21,8 +21,8 @@ const getSeatsList = id => {
     return axios.get(`${SEATS_URL}/${id}/seats`);
 };
 
-const bookSeats = () => {
-    return axios.post(BOOK_URL);
+const bookSeats = data => {
+    return axios.post(BOOK_URL, data);
 };
 
 export { getMoviesList, getSessionsList, getSeatsList, bookSeats };
