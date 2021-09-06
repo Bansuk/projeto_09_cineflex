@@ -8,6 +8,10 @@ const SuccessPage = ({ updateOrder, order }) => {
         updateOrder("", "", "", [], [], "", "");
     };
 
+    const formatCPF = cpf => {
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    };
+
     return (
         <>
             <MainTitle
@@ -30,7 +34,7 @@ const SuccessPage = ({ updateOrder, order }) => {
                 <Title>Comprador</Title>
                 <Information>Nome: {order.orderInfo.name}</Information>
                 <br />
-                <Information>CPF: {order.orderInfo.cpf}</Information>
+                <Information>CPF: {formatCPF(order.orderInfo.cpf)}</Information>
             </Container>
             <HomeButton>
                 <Link to={"/"}>

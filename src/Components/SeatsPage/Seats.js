@@ -43,15 +43,18 @@ const Seats = ({ updateOrder, order }) => {
         if (buyerName === "") {
             alert("O nome do comprador não pode estar em branco!");
             e.preventDefault();
+        } else if (!/^([^0-9]*)$/.test(buyerName)) {
+            alert("O nome do comprador não pode conter números!");
+            e.preventDefault();
         }
-
         if (buyerId === "") {
             alert("O cpf do comprador não pode estar em branco!");
             e.preventDefault();
+        } else if (!/\d{3}\.?\d{3}\.?\d{3}-?\d{2}/.test(buyerId)) {
+            alert("Formato de CPF inválido!");
+            e.preventDefault();
         }
-    };
 
-    const sendOrder = () => {
         updateOrder(
             seats.movie.title,
             seats.day.date,
@@ -61,7 +64,10 @@ const Seats = ({ updateOrder, order }) => {
             buyerName,
             buyerId
         );
-        //bookSeats(order.orderInfo);
+    };
+
+    const sendOrder = () => {
+        bookSeats(order.orderInfo);
     };
 
     return (
