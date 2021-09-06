@@ -44,5 +44,5 @@ const SessionsList = () => {
 export default SessionsList;
 
 const Container = styled.div`
-    margin-left: 25px;
+    margin: 0 0 150px 25px;
 `;

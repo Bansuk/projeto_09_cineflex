@@ -73,6 +73,20 @@ const Seats = ({ updateOrder, order }) => {
                         <Seat seat={seat} selectSeat={selectSeat} />
                     ))}
                 </div>
+                <div className="seats__orientation">
+                    <div className="seats__example">
+                        <button className="seats__seat seats__seat--selected"></button>
+                        <div>Selecionado</div>
+                    </div>
+                    <div className="seats__example">
+                        <button className="seats__seat"></button>
+                        <div>Disponível</div>
+                    </div>
+                    <div className="seats__example">
+                        <button className="seats__seat seats__seat--unavailable"></button>
+                        <div>Indisponível</div>
+                    </div>
+                </div>
                 <form className="seats__form">
                     <div className="seats__input">
                         <span>Nome do comprador:</span>
@@ -96,9 +110,9 @@ const Seats = ({ updateOrder, order }) => {
                 </form>
                 <Link to="/sucesso" onClick={handleOrder}>
                     <Button
-                        style={"seats__button"}
                         content={"Reservar assento(s)"}
                         action={sendOrder}
+                        iswider={true}
                     />
                 </Link>
                 <Footer

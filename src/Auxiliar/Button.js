@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const Button = ({ content, action, height, width }) => {
+const Button = ({ content, action, iswider }) => {
     return (
-        <ButtonStyle onClick={action} height={height} width={width}>
+        <ButtonStyle onClick={action} iswider={iswider}>
             {content}
         </ButtonStyle>
     );
@@ -17,6 +17,6 @@ const ButtonStyle = styled.button`
     font-size: 18px;
     font-weight: 400;
     margin-right: 10px;
-    height: ${props => props.height || "43px"};
-    width: ${props => props.width || "83px"};
+    height: 43px;
+    width: ${props => (props.iswider ? "225px" : "83px")};
 `;

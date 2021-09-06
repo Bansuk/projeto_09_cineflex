@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 150px;
 }
 
 .seats__button {
@@ -14,6 +15,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 0 20px 0 20px;
 }
 
 .seats__seat {
@@ -28,6 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 4px 18px 0;
 }
 
 .seats__seat--selected {
@@ -42,6 +45,7 @@
 
 .seats__form {
     margin-top: 40px;
+    margin-bottom: 57px;
 }
 
 .seats__input {
@@ -51,4 +55,32 @@
     font-weight: 400;
     font-size: 18px;
     color: #293845;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.seats__input input {
+    margin-top: 5px;
+    height: 51px;
+}
+
+.seats__input input::placeholder {
+    color: #afafaf;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.seats__orientation {
+    display: flex;
+    justify-content: space-around;
+    font-family: "Roboto", sans-serif;
+    color: #4e5a65;
+}
+
+.seats__example {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 12px;
 }
