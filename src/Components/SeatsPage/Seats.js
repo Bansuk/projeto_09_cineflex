@@ -3,6 +3,7 @@ import { bookSeats, getSeatsList } from "../../Auxiliar/API";
 import { Link, useParams } from "react-router-dom";
 import Button from "../../Auxiliar/Button";
 import Footer from "../Footer/Footer";
+import Loading from "../../Auxiliar/Loading";
 import Seat from "./Seat";
 import MainTitle from "../MainTitle/MainTitle";
 import "./Seats.css";
@@ -19,7 +20,7 @@ const Seats = ({ updateOrder, order }) => {
         getSeatsList(idSessao).then(response => setSeats(response.data));
     }, [idSessao]);
 
-    if (seats === null) return <span>Carregando...</span>;
+    if (seats === null) return <Loading />;
 
     const selectSeat = (seat, selected) => {
         if (selected) {
@@ -30,6 +31,23 @@ const Seats = ({ updateOrder, order }) => {
             setSelectedSeatsNumber(
                 selectedSeatsNumber.filter(e => e !== seat.name)
             );
+        }
+    };
+
+    const handleOrder = e => {
+        if (selectedSeats.length === 0) {
+            alert("Pelo menos um assento deve ser escolhido!");
+            e.preventDefault();
+        }
+
+        if (buyerName === "") {
+            alert("O nome do comprador não pode estar em branco!");
+            e.preventDefault();
+        }
+
+        if (buyerId === "") {
+            alert("O cpf do comprador não pode estar em branco!");
+            e.preventDefault();
         }
     };
 
@@ -76,7 +94,7 @@ const Seats = ({ updateOrder, order }) => {
                         />
                     </div>
                 </form>
-                <Link to="/sucesso">
+                <Link to="/sucesso" onClick={handleOrder}>
                     <Button
                         style={"seats__button"}
                         content={"Reservar assento(s)"}
@@ -85,7 +103,6 @@ const Seats = ({ updateOrder, order }) => {
                 </Link>
                 <Footer
                     movieTitle={seats.movie.title}
-                    link={""}
                     source={seats.movie.posterURL}
                     alt={seats.movie.overview}
                     movieShowtime={`${seats.day.weekday} - ${seats.name}`}

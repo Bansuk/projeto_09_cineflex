@@ -1,10 +1,10 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useState } from "react";
 import Header from "./Components/Header/Header";
 import MoviesList from "./Components/MoviesList/MoviesList";
-import SessionsList from "./Components/SessionsList/SessionsList";
 import Seats from "./Components/SeatsPage/Seats";
+import SessionsList from "./Components/SessionsList/SessionsList";
 import SuccessPage from "./Components/SuccessPage/SuccessPage";
-import { useState } from "react";
 
 const App = () => {
     const [order, setOrder] = useState({

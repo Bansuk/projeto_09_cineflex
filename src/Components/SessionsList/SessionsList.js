@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
 import { getSessionsList } from "../../Auxiliar/API";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Session from "./Sessions/Session";
-import MainTitle from "../MainTitle/MainTitle";
+import styled from "styled-components";
 import Footer from "../Footer/Footer";
-import "./SessionsList.css";
+import Loading from "../../Auxiliar/Loading";
+import MainTitle from "../MainTitle/MainTitle";
+import Session from "./Session";
 
 const SessionsList = () => {
     const { idFilme } = useParams();
@@ -15,25 +16,24 @@ const SessionsList = () => {
     }, [idFilme]);
 
     if (sessions === null) {
-        return <span>Carregando...</span>;
+        return <Loading />;
     }
 
     return (
         <>
             <MainTitle content={"Selecione o horário"} />
-            <div className="sessionsList">
-                {sessions.days.map((session, index) => (
+            <Container>
+                {sessions.days.map(session => (
                     <Session
-                        key={index}
+                        key={session.id}
                         date={session.date}
                         weekday={session.weekday}
                         showtimes={session.showtimes}
                     />
                 ))}
-            </div>
+            </Container>
             <Footer
                 movieTitle={sessions.title}
-                link={null}
                 source={sessions.posterURL}
                 alt={sessions.overview}
             />
@@ -42,3 +42,7 @@ const SessionsList = () => {
 };
 
 export default SessionsList;
+
+const Container = styled.div`
+    margin-left: 25px;
+`;

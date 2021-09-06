@@ -1,23 +1,35 @@
-import Movie from "../MoviesList/Movies/Movie";
-import "./Footer.css";
+import styled from "styled-components";
+import Movie from "../MoviesList/Movie";
 
 const Footer = ({ movieTitle, movieShowtime, id, source, alt }) => {
     return (
-        <div className="footer">
-            <Movie
-                id={id}
-                imageStyle={"footer__image"}
-                cardStyle={"footer__card"}
-                source={source}
-                alt={alt}
-            />
+        <FooterStyle>
+            <Movie id={id} source={source} alt={alt} isfooter={true} />
             <div>
-                <span className="footer__title">{movieTitle}</span>
+                <FooterTitle>{movieTitle}</FooterTitle>
                 <br />
-                <span className="footer__title">{movieShowtime}</span>
+                <FooterTitle>{movieShowtime}</FooterTitle>
             </div>
-        </div>
+        </FooterStyle>
     );
 };
 
 export default Footer;
+
+const FooterStyle = styled.div`
+    align-items: center;
+    background-color: #dfe6ed;
+    border: 1px solid #9eadba;
+    bottom: 0;
+    display: flex;
+    height: 117px;
+    position: fixed;
+    width: 100%;
+`;
+
+const FooterTitle = styled.span`
+    font-size: 26px;
+    font-family: "Roboto", sans-serif;
+    color: #293845;
+    font-weight: 400;
+`;

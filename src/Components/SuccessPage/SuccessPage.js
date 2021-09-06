@@ -30,7 +30,7 @@ const SuccessPage = ({ updateOrder, order }) => {
                 <Title>Comprador</Title>
                 <Information>Nome: {order.orderInfo.name}</Information>
                 <br />
-                <Information>CPF: {order.orderInfo.identification}</Information>
+                <Information>CPF: {order.orderInfo.cpf}</Information>
             </Container>
             <Link to={"/"}>
                 <Button
