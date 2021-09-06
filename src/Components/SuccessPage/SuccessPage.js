@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { bookSeats } from "../../Auxiliar/API";
 import styled from "styled-components";
 import Button from "../../Auxiliar/Button";
 import MainTitle from "../MainTitle/MainTitle";
 
 const SuccessPage = ({ updateOrder, order }) => {
+    bookSeats(order.orderInfo);
     const clearOrder = () => {
         updateOrder("", "", "", [], [], "", "");
     };

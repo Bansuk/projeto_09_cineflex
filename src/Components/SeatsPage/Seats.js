@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { bookSeats, getSeatsList } from "../../Auxiliar/API";
+import { getSeatsList } from "../../Auxiliar/API";
 import { Link, useParams } from "react-router-dom";
 import Button from "../../Auxiliar/Button";
 import Footer from "../Footer/Footer";
@@ -54,7 +54,9 @@ const Seats = ({ updateOrder, order }) => {
             alert("Formato de CPF inválido!");
             e.preventDefault();
         }
+    };
 
+    const sendOrder = () => {
         updateOrder(
             seats.movie.title,
             seats.day.date,
@@ -64,10 +66,6 @@ const Seats = ({ updateOrder, order }) => {
             buyerName,
             buyerId
         );
-    };
-
-    const sendOrder = () => {
-        bookSeats(order.orderInfo);
     };
 
     return (
