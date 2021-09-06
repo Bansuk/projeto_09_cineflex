@@ -22,6 +22,7 @@ const getSeatsList = id => {
 };
 
 const bookSeats = data => {
+    console.log(data);
     return axios.post(BOOK_URL, data);
 };
 

@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { bookSeats, getSeatsList } from "../../Auxiliar/API";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Button from "../../Auxiliar/Button";
 import Footer from "../Footer/Footer";
 import Seat from "./Seat";
 import "./Seats.css";
 
-const Seats = () => {
+const Seats = ({ updateOrder, order }) => {
     const { idSessao } = useParams();
     const [seats, setSeats] = useState(null);
     const [selectedSeats, setSelectedSeats] = useState([]);
+    const [selectedSeatsNumber, setSelectedSeatsNumber] = useState([]);
     const [buyerName, setBuyerName] = useState("");
     const [buyerId, setBuyerId] = useState("");
-    const order = { ids: [], name: "", cpf: "" };
 
     useEffect(() => {
         getSeatsList(idSessao).then(response => setSeats(response.data));
@@ -21,15 +21,28 @@ const Seats = () => {
     if (seats === null) return <span>Carregando...</span>;
 
     const selectSeat = (seat, selected) => {
-        if (selected) setSelectedSeats([...selectedSeats, seat.id]);
-        else setSelectedSeats(selectedSeats.filter(e => e !== seat.id));
+        if (selected) {
+            setSelectedSeats([...selectedSeats, seat.id]);
+            setSelectedSeatsNumber([...selectedSeatsNumber, seat.name]);
+        } else {
+            setSelectedSeats(selectedSeats.filter(e => e !== seat.id));
+            setSelectedSeatsNumber(
+                selectedSeatsNumber.filter(e => e !== seat.name)
+            );
+        }
     };
 
     const sendOrder = () => {
-        order.ids = selectedSeats;
-        order.name = buyerName;
-        order.cpf = buyerId;
-        bookSeats(order);
+        updateOrder(
+            seats.movie.title,
+            seats.day.date,
+            seats.name,
+            selectedSeatsNumber,
+            selectedSeats,
+            buyerName,
+            buyerId
+        );
+        //bookSeats(order.orderInfo);
     };
 
     return (
@@ -60,11 +73,13 @@ const Seats = () => {
                     />
                 </div>
             </form>
-            <Button
-                style={"seats__button"}
-                content={"Reservar assento(s)"}
-                onClick={sendOrder()}
-            />
+            <Link to="/sucesso">
+                <Button
+                    style={"seats__button"}
+                    content={"Reservar assento(s)"}
+                    action={sendOrder}
+                />
+            </Link>
             <Footer
                 movieTitle={seats.movie.title}
                 link={""}

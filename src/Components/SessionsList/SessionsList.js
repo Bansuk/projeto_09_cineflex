@@ -1,8 +1,8 @@
-import Session from "./Sessions/Session";
-import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import { getSessionsList } from "../../Auxiliar/API";
 import { useParams } from "react-router-dom";
+import Session from "./Sessions/Session";
+import Footer from "../Footer/Footer";
 import "./SessionsList.css";
 
 const SessionsList = () => {
