@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Button from "../../Auxiliar/Button";
 import Footer from "../Footer/Footer";
 import Seat from "./Seat";
+import MainTitle from "../MainTitle/MainTitle";
 import "./Seats.css";
 
 const Seats = ({ updateOrder, order }) => {
@@ -46,48 +47,51 @@ const Seats = ({ updateOrder, order }) => {
     };
 
     return (
-        <div className="seats">
-            <div className="seats__map">
-                {seats.seats.map(seat => (
-                    <Seat seat={seat} selectSeat={selectSeat} />
-                ))}
-            </div>
-            <form className="seats__form">
-                <div className="seats__input">
-                    <span>Nome do comprador:</span>
-                    <input
-                        type="text"
-                        placeholder="Digite seu nome..."
-                        value={buyerName}
-                        onChange={e => setBuyerName(e.target.value)}
-                    />
+        <>
+            <MainTitle content={"Selecione o(s) assento(s)"} />
+            <div className="seats">
+                <div className="seats__map">
+                    {seats.seats.map(seat => (
+                        <Seat seat={seat} selectSeat={selectSeat} />
+                    ))}
                 </div>
+                <form className="seats__form">
+                    <div className="seats__input">
+                        <span>Nome do comprador:</span>
+                        <input
+                            type="text"
+                            placeholder="Digite seu nome..."
+                            value={buyerName}
+                            onChange={e => setBuyerName(e.target.value)}
+                        />
+                    </div>
 
-                <div className="seats__input">
-                    <span>CPF do comprador:</span>
-                    <input
-                        type="text"
-                        placeholder="Digite seu CPF..."
-                        value={buyerId}
-                        onChange={e => setBuyerId(e.target.value)}
+                    <div className="seats__input">
+                        <span>CPF do comprador:</span>
+                        <input
+                            type="text"
+                            placeholder="Digite seu CPF..."
+                            value={buyerId}
+                            onChange={e => setBuyerId(e.target.value)}
+                        />
+                    </div>
+                </form>
+                <Link to="/sucesso">
+                    <Button
+                        style={"seats__button"}
+                        content={"Reservar assento(s)"}
+                        action={sendOrder}
                     />
-                </div>
-            </form>
-            <Link to="/sucesso">
-                <Button
-                    style={"seats__button"}
-                    content={"Reservar assento(s)"}
-                    action={sendOrder}
+                </Link>
+                <Footer
+                    movieTitle={seats.movie.title}
+                    link={""}
+                    source={seats.movie.posterURL}
+                    alt={seats.movie.overview}
+                    movieShowtime={`${seats.day.weekday} - ${seats.name}`}
                 />
-            </Link>
-            <Footer
-                movieTitle={seats.movie.title}
-                link={""}
-                source={seats.movie.posterURL}
-                alt={seats.movie.overview}
-                movieShowtime={`${seats.day.weekday} - ${seats.name}`}
-            />
-        </div>
+            </div>
+        </>
     );
 };
 
