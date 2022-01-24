@@ -26,7 +26,7 @@ This is an web application that allows the user to navigate through movies and i
 **1. Clone the Repository**
 
 ```
-$ git clone https://github.com/Bansuk/api_sing_me_a_song
+$ git clone https://github.com/Bansuk/projeto_09_cineflex
 ```
 
 **2. Install dependencies**
